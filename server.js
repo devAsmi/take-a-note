@@ -64,6 +64,32 @@ app.post("/api/notes", function (req, res) {
   }
 });
 
+//create a delete /api/notes route to delete notes
+app.delete("/api/notes/:id", function (req, res) {
+  const { id } = req.params;
+  // get notes from db
+  const file = "./db/db.json";
+  fs.readFile(file, "utf8", (err, data) => {
+    if (err) {
+      console.error(err);
+      res.sendStatus(500);
+    } else {
+      const notes = JSON.parse(data);
+      const index = notes.findIndex((note) => note.id === id);
+      notes.splice(index, 1);
+
+      fs.writeFile(file, JSON.stringify(notes, null, 2), (err) => {
+        if (err) {
+          console.error(err);
+          res.sendStatus(500);
+        }
+        console.info(`Notes with ${id} deleted`);
+        res.sendStatus(200);
+      });
+    }
+  });
+});
+
 app.listen(port, () => {
   console.log(`Example app listening on port ${port}`);
 });
