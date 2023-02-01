@@ -26,7 +26,7 @@ Licensed under the [MIT](https://choosealicense.com/licenses/mit) license.
 
 ## Questions
 
-[Github repo](https://github.com/devAsmi)
+[Github repo](https://github.com/devAsmi/take-a-note)
 
 ## ScreenShot
 
