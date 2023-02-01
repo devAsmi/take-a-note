@@ -4,7 +4,7 @@ const fs = require("fs");
 const util = require("util");
 const crypto = require("crypto");
 const app = express();
-const port = 3333;
+const port = process.env.PORT || 3333;
 
 app.use(express.json());
 app.use(express.urlencoded({ extended: true }));
